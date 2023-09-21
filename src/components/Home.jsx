@@ -1,6 +1,3 @@
-
-
-
 import { Link } from 'react-router-dom';
 import manHello from '../assets/guy-hello.png';
 
@@ -15,7 +12,7 @@ function Home() {
             <hr />
             <p>Welcome to my technical assessment for GPRX! In this single-page application (SPA), you can perform all CRUD (Create, Read, Update, Delete) operations related to posts.</p>
             <div className='explore_posts__container'>
-                <h3>Let's explore the Posts Section! 👉</h3>
+                <h3>Let&rsquo;s explore the Posts Section! 👉</h3>
                 <Link to="/posts"
                 style={{
                     backgroundColor: '#3498db', 
