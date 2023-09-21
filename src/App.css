@@ -72,3 +72,9 @@
   .navbar__global a:hover {
     color: #2980b9;
   }
+
+/* Estilo para los enlaces activos */
+.navbar__global ul li a.active {
+    color: #2980b9;
+    font-weight: bold;
+  }

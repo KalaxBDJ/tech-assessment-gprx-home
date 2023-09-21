@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import { Home } from './components/Home'; // Assuming you have a Home component
 import { Posts } from './components/Posts'; // Assuming you have a Posts component
 import { NotFound } from './components/NotFound'; // Assuming you have a NotFound component
@@ -10,10 +10,10 @@ function App() {
       <nav className='navbar__global'>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/" activeclassname="active">Home</NavLink>
           </li>
           <li>
-            <Link to="/posts">Posts</Link>
+            <NavLink to="/posts" activeclassname="active">Posts</NavLink>
           </li>
         </ul>
       </nav>
