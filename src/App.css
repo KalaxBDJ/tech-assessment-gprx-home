@@ -38,3 +38,37 @@
     margin-left: 10px;
 }
 
+
+/* New Styles */
+/* Navbar Styles */
+.navbar__global {
+    display: flex;
+    color: white;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .navbar__global ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .navbar__global li {
+    margin-right: 20px;
+  }
+  
+  /* Navbar Link Styles */
+  .navbar__global a {
+    text-decoration: none;
+    color: white ;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar__global a:hover {
+    color: #2980b9;
+  }

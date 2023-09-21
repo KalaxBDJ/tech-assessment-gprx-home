@@ -3,7 +3,8 @@
 function Posts () {
     return (
         <>
-            <h1>Welcome to Posts.</h1>
+            <h1>Posts</h1>
+            <hr />
         </>
     );
 }
