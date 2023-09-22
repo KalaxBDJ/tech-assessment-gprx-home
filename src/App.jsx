@@ -5,6 +5,7 @@ import { NotFound } from './components/NotFound'; // Assuming you have a NotFoun
 import './App.css';
 import { PostProvider } from './Contexts/PostContext';
 import { PostCreate } from './components/PostCreate';
+import { PostDetails } from './components/PostDetails';
 
 
 function App() {
@@ -29,13 +30,18 @@ function App() {
             <Posts />
           </PostProvider>
         } />
-        <Route path='/create' element= {
+        <Route path='/create' element={
           <PostProvider>
-            <PostCreate/>
+            <PostCreate />
           </PostProvider>
         }>
-
         </Route>
+        <Route path="/posts/:id" element={
+          <PostProvider>
+            <PostDetails />
+          </PostProvider>
+        } />
+
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,10 +1,11 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../Contexts/PostContext';
 
 function PostCreate() {
   const { createPost } = useContext(PostContext);
   const [click, setClick] = useState(false);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     title: '',
@@ -19,14 +20,19 @@ function PostCreate() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     setClick(true);
     e.preventDefault();
+
     if (formData.title == "" || formData.body === "") {
       setClick(false);
       return;
     }
-    createPost(formData);
+
+    const id = await createPost(formData);
+
+    // Redirige a la página de detalles del nuevo post
+    navigate(`/posts/${id}`);
   };
 
   return (

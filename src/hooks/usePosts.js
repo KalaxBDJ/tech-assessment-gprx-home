@@ -5,19 +5,44 @@ function usePosts() {
   //LocalStorage Custom Hook
   const { posts, postKeys, savePosts } = useLocalStorage();
 
-  const createPost = (post) => {
+  const createPost = async (post) => {
     //Crate post structure
     const newPost = {
       title: post.title,
       body: post.body,
       userId: 1,
-      id: posts[posts.length - 1].id + 1,
     };
 
-    //Create copy of actual posts and save them in the state with the new post
-    let newPosts = [...posts];
-    newPosts.push(newPost);
-    savePosts(newPosts);
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+          method: "POST",
+          body: JSON.stringify(newPost),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to create post");
+      }
+
+      const resp = await response.json();
+
+      // Cambia el Id debido a que la API siempre establece el mismo id
+      resp.id = posts[posts.length - 1].id + 1;
+
+      // Crea una copia de los posts actuales y guárdalos en el estado con el nuevo post
+      let newPosts = [...posts];
+      newPosts.push(resp);
+      savePosts(newPosts);
+
+      return resp.id;
+    } catch (error) {
+      return -1;
+    }
   };
 
   return { posts, postKeys, createPost };
