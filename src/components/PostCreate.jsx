@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PostContext } from '../Contexts/PostContext';
 
 function PostCreate() {
+  const { createPost } = useContext(PostContext);
+
   const [formData, setFormData] = useState({
     title: '',
     body: '',
@@ -17,7 +20,7 @@ function PostCreate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    createPost(formData);
   };
 
   return (
@@ -26,8 +29,8 @@ function PostCreate() {
         <Link to="/posts"
           className='btn btn-primary'
           style={{
-            color : 'white',
-            textDecoration : 'none'
+            color: 'white',
+            textDecoration: 'none'
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{

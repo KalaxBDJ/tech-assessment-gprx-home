@@ -23,6 +23,7 @@ function useLocalStorage() {
       setPosts(localPosts);
       setPostKeys(Object.keys(localPosts[0]));
     }
+    
   }, []);
 
   const savePosts = (newPosts) => {
