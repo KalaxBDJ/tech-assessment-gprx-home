@@ -24,18 +24,12 @@ function PostCreate() {
     <>
       <div>
         <Link to="/posts"
+          className='btn btn-primary'
           style={{
-            backgroundColor: '#3498db',
-            border: '2px solid #2980b9',
-            color: 'white',
-            padding: '10px 20px',
-            borderRadius: '5px',
-            fontSize: '16px',
-            cursor: 'pointer',
-            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-            transition: 'background-color 0.3s ease',
-            textDecoration: 'none',
-          }}>
+            color : 'white',
+            textDecoration : 'none'
+          }}
+        >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{
             width: '15px',
             height: 'auto',
