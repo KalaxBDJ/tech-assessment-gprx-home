@@ -23,7 +23,7 @@ function Posts() {
                     data={posts}
                     options={MUI_OPTIONS}
                     columns={postKeys}
-                /> : <span>No Records Found</span>}
+                /> : <div className="spinner"></div>}
                 
             </div>
         </>
