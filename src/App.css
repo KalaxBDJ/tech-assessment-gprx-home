@@ -78,3 +78,7 @@
     color: #2980b9;
     font-weight: bold;
   }
+
+  .dataTable_container tr{
+    --accent-bg: #297fb960 !important;
+  }
