@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
+
+//Import Image
 import manHello from '../assets/guy-hello.png';
 
 function Home() {
     return (
         <>
-            <div className='home__container'>
+            <header className='home__container'>
                 <img className="home__img" src={manHello} alt="Guy Icon hello" />
                 <h1 className='home__h1'>👋Hello There!</h1>
-            </div>
+            </header>
             <hr />
             <p>Welcome to my technical assessment for GPRX! In this single-page application (SPA), you can perform all CRUD (Create, Read, Update, Delete) operations related to posts.</p>
-            <div className='explore_posts__container'>
+            <main className='explore_posts__container'>
                 <h3>Let&rsquo;s explore the Posts Section! 👉</h3>
                 <Link to="/posts"
                 style={{
@@ -27,7 +29,7 @@ function Home() {
                 }}>
                     Posts
                 </Link>
-            </div>
+            </main>
         </>
     );
 }

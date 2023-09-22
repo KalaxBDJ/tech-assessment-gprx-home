@@ -11,20 +11,22 @@ const MUI_OPTIONS = {
 };
 
 function Posts() {
-    const {posts, postKeys} = useContext(PostContext);
+    const { posts, postKeys } = useContext(PostContext);
 
     return (
         <>
-            <h1>Posts</h1>
+            <header>
+                <h1>Posts</h1>
+            </header>
             <hr />
-            <div className="dataTable_container">
-                {posts.length > 0 && postKeys.length > 0  ? <MUIDataTable
+            <main className="dataTable_container">
+                {posts.length > 0 && postKeys.length > 0 ? <MUIDataTable
                     data={posts}
                     options={MUI_OPTIONS}
                     columns={postKeys}
                 /> : <div className="spinner"></div>}
-                
-            </div>
+
+            </main>
         </>
     );
 }
