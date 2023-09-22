@@ -1,20 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useLocalStorage } from "./useLocalStorage";
 
 //Get the posts from API
 function usePosts() {
-  const [posts, setPosts] = useState([]);
-
-  //Keys for MUI DataTable
-  const [postKeys, setPostKeys] = useState([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((res) => res.json())
-      .then((resp) => {
-        setPosts(resp);
-        setPostKeys(Object.keys(resp[0]));
-      });
-  }, []);
+  //LocalStorage Custom Hook
+  const {posts, postKeys, savePosts} = useLocalStorage();
 
   return { posts, postKeys };
 }
