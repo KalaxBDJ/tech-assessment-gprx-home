@@ -156,3 +156,10 @@
   color: #3d3838;
 }
 
+.card-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+

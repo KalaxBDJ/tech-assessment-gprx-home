@@ -4,6 +4,7 @@ import { PostContext } from '../Contexts/PostContext';
 
 function PostCreate() {
   const { createPost } = useContext(PostContext);
+  const [click, setClick] = useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -19,7 +20,12 @@ function PostCreate() {
   };
 
   const handleSubmit = (e) => {
+    setClick(true);
     e.preventDefault();
+    if (formData.title == "" || formData.body === "") {
+      setClick(false);
+      return;
+    }
     createPost(formData);
   };
 
@@ -74,10 +80,17 @@ function PostCreate() {
                 rows={10}
               ></textarea>
             </div>
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary">
-                Create Post
-              </button>
+            <div className="form-group card-actions">
+              {
+                !click ? (
+                  <button type="submit" className="btn btn-primary">
+                    Create Post
+                  </button>
+                ) : (
+                  <div className="spinner"></div>
+                )
+              }
+
             </div>
           </form>
         </div>
