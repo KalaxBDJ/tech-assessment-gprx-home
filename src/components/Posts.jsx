@@ -19,7 +19,6 @@ function Posts() {
             <hr />
             <div className="dataTable_container">
                 {posts.length > 0 && postKeys.length > 0  ? <MUIDataTable
-                    title={"Posts Table"}
                     data={posts}
                     options={MUI_OPTIONS}
                     columns={postKeys}
