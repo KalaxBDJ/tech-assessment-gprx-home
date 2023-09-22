@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import manHello from '../assets/guy-hello.png';
 
-
 function Home() {
     return (
         <>
