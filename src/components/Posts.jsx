@@ -3,7 +3,7 @@
 //Import Material UI Data tables
 import MUIDataTable from "mui-datatables";
 import { useContext } from "react";
-import { PostContext } from "../PostContext";
+import { PostContext } from "../Contexts/PostContext";
 
 //MUIDataTable config
 const MUI_OPTIONS = {

@@ -3,7 +3,7 @@ import { Home } from './components/Home'; // Assuming you have a Home component
 import { Posts } from './components/Posts'; // Assuming you have a Posts component
 import { NotFound } from './components/NotFound'; // Assuming you have a NotFound component
 import './App.css';
-import { PostProvider } from './PostContext';
+import { PostProvider } from './Contexts/PostContext';
 import { PostCreate } from './components/PostCreate';
 
 
