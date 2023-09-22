@@ -11,7 +11,7 @@ function Home() {
                 <h1 className='home__h1'>👋Hello There!</h1>
             </header>
             <hr />
-            <p>Welcome to my technical assessment for GPRX! In this single-page application (SPA), you can perform all CRUD (Create, Read, Update, Delete) operations related to posts.</p>
+            <p>Welcome to my technical assessment for PRGX! In this single-page application (SPA), you can perform all CRUD (Create, Read, Update, Delete) operations related to posts.</p>
             <main className='explore_posts__container'>
                 <h3>Let&rsquo;s explore the Posts Section! 👉</h3>
                 <Link to="/posts"
