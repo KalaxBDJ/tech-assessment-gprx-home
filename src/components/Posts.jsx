@@ -2,12 +2,13 @@
 
 //Import Material UI Data tables
 import MUIDataTable from "mui-datatables";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PostContext } from "../Contexts/PostContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function Posts() {
-    const { posts, postKeys } = useContext(PostContext);
+    const { posts } = useContext(PostContext);
+    const [postKeys, setpostKeys] = useState([]);
     const navigate = useNavigate();
 
     //Function to Handle row click and navigato to details section.
@@ -21,6 +22,13 @@ function Posts() {
         selectableRows: "none",
         onRowClick: handleRowClick
     };
+
+    useEffect( () => {
+        //Set keys when posts available.
+        if (posts.length > 0) {
+            setpostKeys(Object.keys(posts[0]));
+        }
+    }, [posts] )
 
     return (
         <>

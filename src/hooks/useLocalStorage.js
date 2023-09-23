@@ -4,8 +4,6 @@ const LOCAL_STORAGE_KEY = "POSTS_V1";
 function useLocalStorage() {
   //Posts
   const [posts, setPosts] = useState([]);
-  //Keys for MUI DataTable
-  const [postKeys, setPostKeys] = useState([]);
 
   useEffect(() => {
     //Get from local storage for data persistance
@@ -14,13 +12,11 @@ function useLocalStorage() {
         .then((res) => res.json())
         .then((resp) => {
           setPosts(resp);
-          setPostKeys(Object.keys(resp[0]));
           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(resp));
         });
     } else {
       const localPosts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
       setPosts(localPosts);
-      setPostKeys(Object.keys(localPosts[0]));
     }
   }, []);
 
@@ -32,7 +28,7 @@ function useLocalStorage() {
     setPosts(newPosts);
   };
 
-  return { posts, postKeys, savePosts };
+  return { posts, savePosts };
 }
 
 export { useLocalStorage };

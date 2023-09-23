@@ -4,7 +4,7 @@ import { error, result } from "../functions/api";
 //Get the posts from API
 function usePosts() {
   //LocalStorage Custom Hook
-  const { posts, postKeys, savePosts } = useLocalStorage();
+  const { posts, savePosts } = useLocalStorage();
 
 
   const createPost = async (post) => {
@@ -121,7 +121,7 @@ function usePosts() {
     }
   };
 
-  return { posts, postKeys, createPost, getPost, updatePost, deletePost };
+  return { posts, createPost, getPost, updatePost, deletePost };
 }
 
 export default usePosts;
