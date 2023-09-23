@@ -107,7 +107,6 @@
   }
 }
 
-
 /* Estilos para la tarjeta */
 .card {
   width: 100%;
@@ -171,10 +170,14 @@
 }
 
 .button_delete {
-  background-color: #FF5733;
+  background-color: #ff5733;
   color: white;
 }
 
 .message {
   color: #33b864;
+}
+
+tr:hover {
+  cursor: pointer;
 }

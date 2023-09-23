@@ -4,30 +4,38 @@
 import MUIDataTable from "mui-datatables";
 import { useContext } from "react";
 import { PostContext } from "../Contexts/PostContext";
-import { Link } from "react-router-dom";
-
-//MUIDataTable config
-const MUI_OPTIONS = {
-    selectableRows: "none"
-};
+import { Link, useNavigate } from "react-router-dom";
 
 function Posts() {
     const { posts, postKeys } = useContext(PostContext);
+    const navigate = useNavigate();
+
+    //Function to Handle row click and navigato to details section.
+    function handleRowClick(rowData) {
+        const postId = rowData[1];
+        navigate(`/posts/${postId}`);
+    }
+
+    //MUIDataTable config
+    const MUI_OPTIONS = {
+        selectableRows: "none",
+        onRowClick: handleRowClick
+    };
 
     return (
         <>
             <header style={{
-                display : 'flex',
-                alignItems : 'center',
-                justifyContent : 'space-between'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
             }}>
                 <h1>Posts</h1>
                 <Link to="/create"
-                className="btn btn-primary"
-                style={{
-                    color : 'white',
-                    textDecoration : 'none'
-                }}>
+                    className="btn btn-primary"
+                    style={{
+                        color: 'white',
+                        textDecoration: 'none'
+                    }}>
                     Create post
                 </Link>
             </header>

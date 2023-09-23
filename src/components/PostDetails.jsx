@@ -8,7 +8,7 @@ function PostDetails() {
     const [post, setPost] = useState({
         title: "",
         body: "",
-        id : parseInt(id)
+        id: parseInt(id)
     });
     const [message, setMessage] = useState('');
 
@@ -20,19 +20,18 @@ function PostDetails() {
         await updatePost(post);
         setMessage('Information updated sucessfully.');
         setClick(false);
-      };
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPost({
-          ...post,
-          [name]: value,
+            ...post,
+            [name]: value,
         });
-      };
+    };
 
     useEffect(() => {
         const fetchPost = () => {
-            console.log("por aca");
             try {
                 const searchedPost = getPost(id) ?? { title: "", body: "" };
                 setPost(searchedPost);
@@ -70,7 +69,7 @@ function PostDetails() {
                 <div className="card-body">
                     <h2 className="card-title">Edit Post</h2>
                     <form
-                      onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                     >
                         <div className="form-group">
                             <label htmlFor="title">Title:</label>

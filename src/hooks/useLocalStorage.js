@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-const LOCAL_STORAGE_KEY = 'POSTS_V1';
-
+const LOCAL_STORAGE_KEY = "POSTS_V1";
 
 function useLocalStorage() {
   //Posts
@@ -23,7 +22,6 @@ function useLocalStorage() {
       setPosts(localPosts);
       setPostKeys(Object.keys(localPosts[0]));
     }
-    
   }, []);
 
   const savePosts = (newPosts) => {
