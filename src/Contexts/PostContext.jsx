@@ -4,7 +4,7 @@ import usePosts from "../hooks/usePosts";
 const PostContext = React.createContext();
 
 function PostProvider({ children }) {
-    const {posts, postKeys, createPost, getPost, updatePost} = usePosts();
+    const {posts, postKeys, createPost, getPost, updatePost, deletePost} = usePosts();
 
     return (
         <PostContext.Provider
@@ -13,7 +13,8 @@ function PostProvider({ children }) {
                 postKeys,
                 createPost,
                 getPost,
-                updatePost
+                updatePost,
+                deletePost
             }}
         >
             {children}

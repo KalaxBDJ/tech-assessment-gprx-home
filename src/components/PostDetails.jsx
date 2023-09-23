@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { PostContext } from "../Contexts/PostContext";
 
 function PostDetails() {
@@ -11,15 +11,23 @@ function PostDetails() {
         id: parseInt(id)
     });
     const [message, setMessage] = useState('');
-
-    const { getPost, updatePost } = useContext(PostContext);
+    const { getPost, updatePost, deletePost } = useContext(PostContext);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
         setClick(true);
+        e.preventDefault();
         await updatePost(post);
         setMessage('Information updated sucessfully.');
         setClick(false);
+    };
+
+    const handleDelete = async () => {
+        setClick(true);
+        const result = await deletePost(post);
+        if(result === 1) {
+            navigate('/posts');
+        }
     };
 
     const handleChange = (e) => {
@@ -102,7 +110,7 @@ function PostDetails() {
                             {
                                 !click ? (
                                     <>
-                                        <button className="button_delete">
+                                        <button type="button"  className="button_delete" onClick={handleDelete}>
                                             DELETE
                                         </button>
                                         <button type="submit" className="btn btn-primary">

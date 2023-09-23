@@ -59,7 +59,7 @@ function usePosts() {
             userId: 1,
             id: postData.id,
             title: postData.title,
-            body: postData.body
+            body: postData.body,
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -85,7 +85,37 @@ function usePosts() {
     }
   };
 
-  return { posts, postKeys, createPost, getPost, updatePost };
+  const deletePost = async (postData) => {
+    try {
+      //Simulating API Call
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${postData.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const resp = await res.json();
+
+      if (Object.keys(resp).length === 0) {
+        const index = posts.findIndex((post) => post.id == postData.id);
+        console.log(index);
+
+        let newPosts = [...posts];
+        newPosts.splice(index, 1);
+
+        savePosts(newPosts);
+        return 1;
+      } else {
+        throw new Error(
+          "Something went wrong deleting the post, please try again."
+        );
+      }
+    } catch (e) {
+      return -1;
+    }
+  };
+
+  return { posts, postKeys, createPost, getPost, updatePost, deletePost };
 }
 
 export default usePosts;
