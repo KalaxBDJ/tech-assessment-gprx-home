@@ -45,12 +45,12 @@ function usePosts() {
     }
   };
 
-  const getPost = async (id) => {
-    return await posts.find((post) => post.id == id);
+  const getPost = (id) => {
+    return posts.find((post) => post.id == id);
   };
 
-  const updatePost = async (postData) => {
-    const index = await posts.findIndex((post) => post.id == postData.id);
+  const updatePost = (postData) => {
+    const index = posts.findIndex((post) => post.id == postData.id);
 
     let newPosts = [...posts];
     newPosts[index] = {...postData};

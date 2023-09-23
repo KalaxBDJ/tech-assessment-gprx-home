@@ -31,9 +31,10 @@ function PostDetails() {
       };
 
     useEffect(() => {
-        const fetchPost = async () => {
+        const fetchPost = () => {
+            console.log("por aca");
             try {
-                const searchedPost = await getPost(id) ?? { title: "", body: "" };
+                const searchedPost = getPost(id) ?? { title: "", body: "" };
                 setPost(searchedPost);
 
             } catch (error) {
