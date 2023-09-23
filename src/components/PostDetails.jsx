@@ -11,14 +11,16 @@ function PostDetails() {
         id: parseInt(id)
     });
     const [message, setMessage] = useState('');
+    const [messageClass, setmessageClass] = useState('');
     const { getPost, updatePost, deletePost } = useContext(PostContext);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         setClick(true);
         e.preventDefault();
-        await updatePost(post);
-        setMessage('Information updated sucessfully.');
+        const response = await updatePost(post);
+        setMessage(response.message);
+        setmessageClass(response.type);
         setClick(false);
     };
 
@@ -105,7 +107,7 @@ function PostDetails() {
                                 rows={10}
                             ></textarea>
                         </div>
-                        {message && <span className="message">{message}</span>}
+                        {message && <span className={"message_" + messageClass}>{message}</span>}
                         <div className="form-group card-actions__edit">
                             {
                                 !click ? (

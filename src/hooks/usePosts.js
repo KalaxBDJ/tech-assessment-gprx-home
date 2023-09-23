@@ -50,9 +50,11 @@ function usePosts() {
   };
 
   const updatePost = async (postData) => {
+    //As the  API fakes the data
+    //sending the request with an id that doesn't exist throws an 500 status code
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${postData.id}`,
+        `https://jsonplaceholder.typicode.com/posts/1`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -67,6 +69,8 @@ function usePosts() {
         }
       );
 
+      console.log(response);
+
       if (!response.ok) {
         throw new Error("Failed to create post");
       }
@@ -80,8 +84,17 @@ function usePosts() {
       let newPosts = [...posts];
       newPosts[index] = { ...resp };
       savePosts(newPosts);
+      return {
+        status : "ok",
+        message : "Information updated sucessfully.",
+        type : "success"
+      };
     } catch (e) {
-      return -1;
+      return {
+        status : "fail",
+        message : "Could not update the post, try again.",
+        type : "error"
+      };
     }
   };
 

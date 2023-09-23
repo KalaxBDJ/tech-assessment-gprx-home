@@ -174,8 +174,12 @@
   color: white;
 }
 
-.message {
+.message_success {
   color: #33b864;
+}
+
+.message_error {
+  color: #ff5733;
 }
 
 tr:hover {
