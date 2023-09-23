@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 //MUIDataTable config
 const MUI_OPTIONS = {
-    filterType: 'checkbox',
+    selectableRows: "none"
 };
 
 function Posts() {

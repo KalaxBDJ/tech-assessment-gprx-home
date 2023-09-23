@@ -45,7 +45,11 @@ function usePosts() {
     }
   };
 
-  return { posts, postKeys, createPost };
+  const getPost = async (id) => {
+    return await posts.find((post) => post.id == id);
+  };
+
+  return { posts, postKeys, createPost, getPost };
 }
 
 export default usePosts;

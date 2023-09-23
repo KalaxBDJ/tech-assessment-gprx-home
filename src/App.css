@@ -163,3 +163,14 @@
   align-items: center;
 }
 
+.card-actions__edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button_delete {
+  background-color: #FF5733;
+  color: white;
+}
