@@ -86,7 +86,7 @@ function PostDetails() {
                                             DELETE
                                         </button>
                                         <button type="submit" className="btn btn-primary">
-                                            Create Post
+                                            Update Post
                                         </button>
                                     </>
                                 ) : (
