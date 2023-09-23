@@ -49,7 +49,15 @@ function usePosts() {
     return await posts.find((post) => post.id == id);
   };
 
-  return { posts, postKeys, createPost, getPost };
+  const updatePost = async (postData) => {
+    const index = await posts.findIndex((post) => post.id == postData.id);
+
+    let newPosts = [...posts];
+    newPosts[index] = {...postData};
+    savePosts(newPosts);
+  };
+
+  return { posts, postKeys, createPost, getPost, updatePost };
 }
 
 export default usePosts;

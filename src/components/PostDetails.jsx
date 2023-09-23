@@ -8,8 +8,27 @@ function PostDetails() {
     const [post, setPost] = useState({
         title: "",
         body: "",
+        id : parseInt(id)
     });
-    const { getPost } = useContext(PostContext);
+    const [message, setMessage] = useState('');
+
+    const { getPost, updatePost } = useContext(PostContext);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setClick(true);
+        await updatePost(post);
+        setMessage('Information updated sucessfully.');
+        setClick(false);
+      };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setPost({
+          ...post,
+          [name]: value,
+        });
+      };
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -50,7 +69,7 @@ function PostDetails() {
                 <div className="card-body">
                     <h2 className="card-title">Edit Post</h2>
                     <form
-                    //   onSubmit={}
+                      onSubmit={handleSubmit}
                     >
                         <div className="form-group">
                             <label htmlFor="title">Title:</label>
@@ -59,7 +78,7 @@ function PostDetails() {
                                 id="title"
                                 name="title"
                                 defaultValue={post?.title}
-                                // onChange={}
+                                onChange={handleChange}
                                 placeholder="Enter title"
                                 required
                                 className="form-control"
@@ -71,13 +90,14 @@ function PostDetails() {
                                 id="body"
                                 name="body"
                                 defaultValue={post?.body}
-                                // onChange={}
+                                onChange={handleChange}
                                 placeholder="Enter body"
                                 required
                                 className="form-control"
                                 rows={10}
                             ></textarea>
                         </div>
+                        {message && <span className="message">{message}</span>}
                         <div className="form-group card-actions__edit">
                             {
                                 !click ? (
