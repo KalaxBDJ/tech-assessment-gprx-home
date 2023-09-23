@@ -1,9 +1,11 @@
 import { useLocalStorage } from "./useLocalStorage";
+import { error, result } from "../functions/api";
 
 //Get the posts from API
 function usePosts() {
   //LocalStorage Custom Hook
   const { posts, postKeys, savePosts } = useLocalStorage();
+
 
   const createPost = async (post) => {
     //Crate post structure
@@ -69,8 +71,6 @@ function usePosts() {
         }
       );
 
-      console.log(response);
-
       if (!response.ok) {
         throw new Error("Failed to create post");
       }
@@ -84,17 +84,10 @@ function usePosts() {
       let newPosts = [...posts];
       newPosts[index] = { ...resp };
       savePosts(newPosts);
-      return {
-        status : "ok",
-        message : "Information updated sucessfully.",
-        type : "success"
-      };
+      
+      return result("Information updated sucessfully.");
     } catch (e) {
-      return {
-        status : "fail",
-        message : "Could not update the post, try again.",
-        type : "error"
-      };
+      return error("Could not update the post, try again.");
     }
   };
 
