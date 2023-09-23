@@ -49,12 +49,40 @@ function usePosts() {
     return posts.find((post) => post.id == id);
   };
 
-  const updatePost = (postData) => {
-    const index = posts.findIndex((post) => post.id == postData.id);
+  const updatePost = async (postData) => {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${postData.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            userId: 1,
+            id: postData.id,
+            title: postData.title,
+            body: postData.body
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
 
-    let newPosts = [...posts];
-    newPosts[index] = {...postData};
-    savePosts(newPosts);
+      if (!response.ok) {
+        throw new Error("Failed to create post");
+      }
+
+      //create resp variable and change id
+      let resp = await response.json();
+      resp.id = postData.id;
+
+      const index = posts.findIndex((post) => post.id == resp.id);
+
+      let newPosts = [...posts];
+      newPosts[index] = { ...resp };
+      savePosts(newPosts);
+    } catch (e) {
+      return -1;
+    }
   };
 
   return { posts, postKeys, createPost, getPost, updatePost };
