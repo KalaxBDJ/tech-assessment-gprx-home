@@ -23,28 +23,22 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/posts" element={
-          <PostProvider>
+      <PostProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/posts" element={
             <Posts />
-          </PostProvider>
-        } />
-        <Route path='/create' element={
-          <PostProvider>
+          } />
+          <Route path='/create' element={
             <PostCreate />
-          </PostProvider>
-        }>
-        </Route>
-        <Route path="/posts/:id" element={
-          <PostProvider>
+          }>
+          </Route>
+          <Route path="/posts/:id" element={
             <PostDetails />
-          </PostProvider>
-        } />
-
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          } />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </PostProvider>
     </BrowserRouter >
 
   );

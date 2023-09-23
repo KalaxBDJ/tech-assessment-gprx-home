@@ -4,6 +4,7 @@ import { PostContext } from "../Contexts/PostContext";
 
 function PostDetails() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [click, setClick] = useState(false);
     const [post, setPost] = useState({
         title: "",
@@ -13,7 +14,6 @@ function PostDetails() {
     const [message, setMessage] = useState('');
     const [messageClass, setmessageClass] = useState('');
     const { getPost, updatePost, deletePost } = useContext(PostContext);
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         setClick(true);
@@ -27,7 +27,7 @@ function PostDetails() {
     const handleDelete = async () => {
         setClick(true);
         const result = await deletePost(post);
-        if(result === 1) {
+        if (result === 1) {
             navigate('/posts');
         }
     };
@@ -44,6 +44,7 @@ function PostDetails() {
         const fetchPost = () => {
             try {
                 const searchedPost = getPost(id) ?? { title: "", body: "" };
+                console.log(searchedPost);
                 setPost(searchedPost);
 
             } catch (error) {
@@ -112,7 +113,7 @@ function PostDetails() {
                             {
                                 !click ? (
                                     <>
-                                        <button type="button"  className="button_delete" onClick={handleDelete}>
+                                        <button type="button" className="button_delete" onClick={handleDelete}>
                                             DELETE
                                         </button>
                                         <button type="submit" className="btn btn-primary">
