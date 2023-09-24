@@ -11,8 +11,8 @@ function usePosts() {
   const createPost = async (post) => {
     //Crate post structure
     const newPost = {
-      title: post.title,
-      body: post.body,
+      title: post.title.trim(),
+      body: post.body.trim(),
       userId: 1,
     };
 
@@ -63,8 +63,8 @@ function usePosts() {
           body: JSON.stringify({
             userId: postData.userId,
             id: postData.id,
-            title: postData.title,
-            body: postData.body,
+            title: postData.title.trim(),
+            body: postData.body.trim(),
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",

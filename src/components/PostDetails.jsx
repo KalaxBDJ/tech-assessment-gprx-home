@@ -24,6 +24,13 @@ function PostDetails() {
         setMessage('');
         setClick(true);
         e.preventDefault();
+
+        //Prevent empty values
+        if (post.title.trim() == "" || post.body.trim() === "") {
+            setClick(false);
+            return;
+        }
+
         const response = await updatePost(post);
         setMessage(response.message);
         setmessageClass(response.type);

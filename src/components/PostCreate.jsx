@@ -24,7 +24,8 @@ function PostCreate() {
     setClick(true);
     e.preventDefault();
 
-    if (formData.title == "" || formData.body === "") {
+    //Prevent empty values
+    if (formData.title.trim() == "" || formData.body.trim() === "") {
       setClick(false);
       return;
     }
