@@ -61,7 +61,7 @@ function usePosts() {
         {
           method: "PUT",
           body: JSON.stringify({
-            userId: 1,
+            userId: postData.userId,
             id: postData.id,
             title: postData.title,
             body: postData.body,

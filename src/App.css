@@ -79,14 +79,9 @@
 }
 
 .dataTable_container tr {
-  --accent-bg: #297fb960 !important;
+  --accent-bg: #ffffff60 !important;
 }
 
-.dataTable_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /* Spinner Styles */
 
 .spinner_container {
