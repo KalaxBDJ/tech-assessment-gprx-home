@@ -16,10 +16,10 @@ function PostDetails() {
     const { getPost, updatePost, deletePost, setSharedMessage, sharedMessage } = useContext(PostContext);
 
     // Clean Message after 2 seconds
-    if(sharedMessage) {
+    if (sharedMessage) {
         setTimeout(() => {
             setSharedMessage('');
-          }, "2000");
+        }, "2000");
     }
 
     const handleSubmit = async (e) => {
@@ -58,7 +58,6 @@ function PostDetails() {
             try {
                 const searchedPost = getPost(id) ?? { title: "", body: "" };
                 setPost(searchedPost);
-
             } catch (error) {
                 console.error("Error fetching post:", error);
             }
@@ -80,7 +79,7 @@ function PostDetails() {
                     style={{
                         color: 'white',
                         textDecoration: 'none',
-                        marginTop : '10px'
+                        marginTop: '10px'
                     }}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{
@@ -94,59 +93,65 @@ function PostDetails() {
                     Back to posts
                 </Link>
             </div>
-            <div className="card">
-                <div className="card-body">
-                    <h2 className="card-title">Edit Post</h2>
-                    <form
-                        onSubmit={handleSubmit}
-                    >
-                        <div className="form-group">
-                            <label htmlFor="title">Title:</label>
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                defaultValue={post?.title}
-                                onChange={handleChange}
-                                placeholder="Enter title"
-                                required
-                                className="form-control"
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="body">Body:</label>
-                            <textarea
-                                id="body"
-                                name="body"
-                                defaultValue={post?.body}
-                                onChange={handleChange}
-                                placeholder="Enter body"
-                                required
-                                className="form-control"
-                                rows={10}
-                            ></textarea>
-                        </div>
-                        {message && <span className={"message_" + messageClass}>{message}</span>}
-                        <div className="form-group card-actions__edit">
-                            {
-                                !click ? (
-                                    <>
-                                        <button type="button" className="button_delete" onClick={handleDelete}>
-                                            DELETE
-                                        </button>
-                                        <button type="submit" className="btn btn-primary">
-                                            Update Post
-                                        </button>
-                                    </>
-                                ) : (
-                                    <div className="spinner"></div>
-                                )
-                            }
+            {post.title ? (
+                <div className="card">
+                    <div className="card-body">
+                        <h2 className="card-title">Edit Post</h2>
+                        <form
+                            onSubmit={handleSubmit}
+                        >
+                            <div className="form-group">
+                                <label htmlFor="title">Title:</label>
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    defaultValue={post?.title}
+                                    onChange={handleChange}
+                                    placeholder="Enter title"
+                                    required
+                                    className="form-control"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="body">Body:</label>
+                                <textarea
+                                    id="body"
+                                    name="body"
+                                    defaultValue={post?.body}
+                                    onChange={handleChange}
+                                    placeholder="Enter body"
+                                    required
+                                    className="form-control"
+                                    rows={10}
+                                ></textarea>
+                            </div>
+                            {message && <span className={"message_" + messageClass}>{message}</span>}
+                            <div className="form-group card-actions__edit">
+                                {
+                                    !click ? (
+                                        <>
+                                            <button type="button" className="button_delete" onClick={handleDelete}>
+                                                DELETE
+                                            </button>
+                                            <button type="submit" className="btn btn-primary">
+                                                Update Post
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <div className="spinner"></div>
+                                    )
+                                }
 
-                        </div>
-                    </form>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="spinner_container">
+                    <div className="spinner"></div>
+                </div>
+            )}
         </>
     );
 }
