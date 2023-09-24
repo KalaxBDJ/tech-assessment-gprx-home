@@ -8,9 +8,9 @@ function result(message) {
 
 function error(message) {
   return {
-    status: "ok",
+    status: "fail",
     message,
-    type: "success",
+    type: "error",
   };
 }
 
