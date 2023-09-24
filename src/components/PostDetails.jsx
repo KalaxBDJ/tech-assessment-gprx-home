@@ -17,7 +17,7 @@ function PostDetails() {
 
     const { getPost, updatePost, deletePost, setSharedMessage, sharedMessage } = useContext(PostContext);
 
-    // Clean Message after 2 seconds
+    // Clean shared message after 2 seconds
     if (sharedMessage) {
         setTimeout(() => {
             setSharedMessage('');
@@ -75,12 +75,13 @@ function PostDetails() {
 
     return (
         <>
-            {/* Displa shared message between components */}
+            {/* Display shared message between components */}
             {sharedMessage && (
                 <div className="sharedMessage_container">
                     <span className="span_sharedMessage">{sharedMessage}</span>
                 </div>
             )}
+            {/* display error message for this component */}
             {errorMessage && (
                 <div className="errorMessage_container">
                     <span className="span_errorMessage">{errorMessage}</span>
