@@ -13,6 +13,8 @@ function PostDetails() {
     });
     const [message, setMessage] = useState('');
     const [messageClass, setmessageClass] = useState('');
+    const [errorMessage, seterrorMessage] = useState('');
+
     const { getPost, updatePost, deletePost, setSharedMessage, sharedMessage } = useContext(PostContext);
 
     // Clean Message after 2 seconds
@@ -54,6 +56,11 @@ function PostDetails() {
     };
 
     useEffect(() => {
+        //Regex to validate id format
+        if (!id.match(/^[0-9]+$/)) {
+            seterrorMessage("Could not find this post.");
+            return;
+        }
         const fetchPost = () => {
             try {
                 const searchedPost = getPost(id) ?? { title: "", body: "" };
@@ -68,9 +75,15 @@ function PostDetails() {
 
     return (
         <>
+            {/* Displa shared message between components */}
             {sharedMessage && (
                 <div className="sharedMessage_container">
                     <span className="span_sharedMessage">{sharedMessage}</span>
+                </div>
+            )}
+            {errorMessage && (
+                <div className="errorMessage_container">
+                    <span className="span_errorMessage">{errorMessage}</span>
                 </div>
             )}
             <div>
@@ -93,7 +106,7 @@ function PostDetails() {
                     Back to posts
                 </Link>
             </div>
-            {post.title ? (
+            {post.title && (
                 <div className="card">
                     <div className="card-body">
                         <h2 className="card-title">Edit Post</h2>
@@ -147,7 +160,8 @@ function PostDetails() {
                         </form>
                     </div>
                 </div>
-            ) : (
+            )}
+            {!errorMessage && !post.title && (
                 <div className="spinner_container">
                     <div className="spinner"></div>
                 </div>

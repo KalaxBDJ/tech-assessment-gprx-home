@@ -211,3 +211,20 @@ tr:hover {
   border-width: 2px;
   margin-bottom: 15px;
 }
+
+.errorMessage_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ff58331e;
+  border-style: solid;
+  border-color: #ff583360;
+  border-width: 2px;
+  margin-bottom: 15px;
+}
+
+.span_errorMessage {
+  color: #ff5733;
+}
