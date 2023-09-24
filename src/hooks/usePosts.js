@@ -1,9 +1,12 @@
 import { useLocalStorage } from "./useLocalStorage";
+import { error, result } from "../functions/api";
+import { useState } from "react";
 
 //Get the posts from API
 function usePosts() {
   //LocalStorage Custom Hook
-  const { posts, postKeys, savePosts } = useLocalStorage();
+  const { posts, savePosts } = useLocalStorage();
+  const [sharedMessage, setSharedMessage] = useState("");
 
   const createPost = async (post) => {
     //Crate post structure
@@ -50,9 +53,11 @@ function usePosts() {
   };
 
   const updatePost = async (postData) => {
+    //As the  API fakes the data
+    //sending the request with an id that doesn't exist throws an 500 status code
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${postData.id}`,
+        `https://jsonplaceholder.typicode.com/posts/1`,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -80,8 +85,10 @@ function usePosts() {
       let newPosts = [...posts];
       newPosts[index] = { ...resp };
       savePosts(newPosts);
+
+      return result("Information updated sucessfully.");
     } catch (e) {
-      return -1;
+      return error("Could not update the post, try again.");
     }
   };
 
@@ -98,24 +105,31 @@ function usePosts() {
 
       if (Object.keys(resp).length === 0) {
         const index = posts.findIndex((post) => post.id == postData.id);
-        console.log(index);
 
         let newPosts = [...posts];
         newPosts.splice(index, 1);
 
         savePosts(newPosts);
-        return 1;
+        return result("Post deleted successfully.");
       } else {
         throw new Error(
           "Something went wrong deleting the post, please try again."
         );
       }
     } catch (e) {
-      return -1;
+      return error(e.message);
     }
   };
 
-  return { posts, postKeys, createPost, getPost, updatePost, deletePost };
+  return {
+    posts,
+    createPost,
+    getPost,
+    updatePost,
+    deletePost,
+    sharedMessage,
+    setSharedMessage
+  };
 }
 
 export default usePosts;

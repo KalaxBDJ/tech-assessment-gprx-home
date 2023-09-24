@@ -2,13 +2,21 @@
 
 //Import Material UI Data tables
 import MUIDataTable from "mui-datatables";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PostContext } from "../Contexts/PostContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function Posts() {
-    const { posts, postKeys } = useContext(PostContext);
+    const { posts, sharedMessage, setSharedMessage } = useContext(PostContext);
+    const [postKeys, setpostKeys] = useState([]);
     const navigate = useNavigate();
+
+    // Clean Message after 2 seconds
+    if(sharedMessage) {
+        setTimeout(() => {
+            setSharedMessage('');
+          }, "2000");
+    }
 
     //Function to Handle row click and navigato to details section.
     function handleRowClick(rowData) {
@@ -21,6 +29,13 @@ function Posts() {
         selectableRows: "none",
         onRowClick: handleRowClick
     };
+
+    useEffect(() => {
+        //Set keys when posts available.
+        if (posts.length > 0) {
+            setpostKeys(Object.keys(posts[0]));
+        }
+    }, [posts])
 
     return (
         <>
@@ -40,6 +55,11 @@ function Posts() {
                 </Link>
             </header>
             <hr />
+            {sharedMessage && (
+                <div className="sharedMessage_container">
+                    <span className="span_sharedMessage">{sharedMessage}</span>
+                </div>
+            )}
             <main className="dataTable_container">
                 {posts.length > 0 && postKeys.length > 0 ? <MUIDataTable
                     data={posts}
