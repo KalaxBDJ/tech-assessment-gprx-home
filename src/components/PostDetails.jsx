@@ -21,6 +21,7 @@ function PostDetails() {
     }
 
     const handleSubmit = async (e) => {
+        setMessage('');
         setClick(true);
         e.preventDefault();
         const response = await updatePost(post);
@@ -108,7 +109,7 @@ function PostDetails() {
                     Back to posts
                 </Link>
             </div>
-            {post.title && (
+            {post && dataLoaded && (
                 <div className="card">
                     <div className="card-body">
                         <h2 className="card-title">Edit Post</h2>
