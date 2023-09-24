@@ -109,7 +109,7 @@ function PostDetails() {
                     Back to posts
                 </Link>
             </div>
-            {post && dataLoaded && (
+            {(Object.keys(post).length > 0 && dataLoaded) && (
                 <div className="card">
                     <div className="card-body">
                         <h2 className="card-title">Edit Post</h2>
@@ -164,7 +164,7 @@ function PostDetails() {
                     </div>
                 </div>
             )}
-            {!errorMessage && !post.title && (
+            {!errorMessage && Object.keys(post).length == 0 && (
                 <div className="spinner_container">
                     <div className="spinner"></div>
                 </div>
