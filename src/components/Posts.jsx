@@ -27,7 +27,9 @@ function Posts() {
     //MUIDataTable config
     const MUI_OPTIONS = {
         selectableRows: "none",
-        onRowClick: handleRowClick
+        onRowClick: handleRowClick,
+        fixedHeader : true,
+        responsive : 'standard'
     };
 
     useEffect(() => {

@@ -5,7 +5,7 @@ const PostContext = React.createContext();
 
 function PostProvider({ children }) {
     const { posts, createPost, getPost, updatePost, deletePost, sharedMessage,
-        setSharedMessage} = usePosts();
+        setSharedMessage, dataLoaded } = usePosts();
 
     return (
         <PostContext.Provider
@@ -16,7 +16,8 @@ function PostProvider({ children }) {
                 updatePost,
                 deletePost,
                 sharedMessage,
-                setSharedMessage
+                setSharedMessage,
+                dataLoaded
             }}
         >
             {children}
