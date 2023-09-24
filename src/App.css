@@ -185,3 +185,20 @@
 tr:hover {
   cursor: pointer;
 }
+
+.span_sharedMessage {
+  color: #33b864;
+}
+
+.sharedMessage_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #00ff2f1f;
+  border-style: solid;
+  border-color: #00ff2f6b;
+  border-width: 2px;
+  margin-bottom: 15px;
+}

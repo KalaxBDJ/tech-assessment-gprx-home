@@ -13,7 +13,14 @@ function PostDetails() {
     });
     const [message, setMessage] = useState('');
     const [messageClass, setmessageClass] = useState('');
-    const { getPost, updatePost, deletePost } = useContext(PostContext);
+    const { getPost, updatePost, deletePost, setSharedMessage, sharedMessage } = useContext(PostContext);
+
+    // Clean Message after 2 seconds
+    if(sharedMessage) {
+        setTimeout(() => {
+            setSharedMessage('');
+          }, "2000");
+    }
 
     const handleSubmit = async (e) => {
         setClick(true);
@@ -26,10 +33,16 @@ function PostDetails() {
 
     const handleDelete = async () => {
         setClick(true);
-        const result = await deletePost(post);
-        if (result === 1) {
+        const response = await deletePost(post);
+        if (response.status == 'ok') {
+            setSharedMessage(response.message);
             navigate('/posts');
+        } else {
+            setMessage(response.message);
+            setmessageClass(response.type);
+            setClick(false);
         }
+
     };
 
     const handleChange = (e) => {
@@ -44,7 +57,6 @@ function PostDetails() {
         const fetchPost = () => {
             try {
                 const searchedPost = getPost(id) ?? { title: "", body: "" };
-                console.log(searchedPost);
                 setPost(searchedPost);
 
             } catch (error) {
@@ -57,12 +69,18 @@ function PostDetails() {
 
     return (
         <>
+            {sharedMessage && (
+                <div className="sharedMessage_container">
+                    <span className="span_sharedMessage">{sharedMessage}</span>
+                </div>
+            )}
             <div>
                 <Link to="/posts"
                     className='btn btn-primary'
                     style={{
                         color: 'white',
-                        textDecoration: 'none'
+                        textDecoration: 'none',
+                        marginTop : '10px'
                     }}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{

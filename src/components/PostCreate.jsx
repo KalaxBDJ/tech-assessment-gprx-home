@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PostContext } from '../Contexts/PostContext';
 
 function PostCreate() {
-  const { createPost } = useContext(PostContext);
+  const { createPost, setSharedMessage } = useContext(PostContext);
   const [click, setClick] = useState(false);
   const navigate = useNavigate();
 
@@ -31,7 +31,8 @@ function PostCreate() {
 
     const id = await createPost(formData);
 
-    // Redirige a la página de detalles del nuevo post
+    // Redirect to post details section.
+    setSharedMessage('Post created successfully.');
     navigate(`/posts/${id}`);
   };
 
