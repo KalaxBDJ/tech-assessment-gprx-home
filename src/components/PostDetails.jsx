@@ -6,16 +6,12 @@ function PostDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [click, setClick] = useState(false);
-    const [post, setPost] = useState({
-        title: "",
-        body: "",
-        id: parseInt(id)
-    });
+    const [post, setPost] = useState({});
     const [message, setMessage] = useState('');
     const [messageClass, setmessageClass] = useState('');
     const [errorMessage, seterrorMessage] = useState('');
 
-    const { getPost, updatePost, deletePost, setSharedMessage, sharedMessage } = useContext(PostContext);
+    const { getPost, updatePost, deletePost, setSharedMessage, sharedMessage, dataLoaded } = useContext(PostContext);
 
     // Clean shared message after 2 seconds
     if (sharedMessage) {
@@ -63,8 +59,13 @@ function PostDetails() {
         }
         const fetchPost = () => {
             try {
-                const searchedPost = getPost(id) ?? { title: "", body: "" };
+                const searchedPost = getPost(id) ?? {};
                 setPost(searchedPost);
+
+                if (dataLoaded && Object.keys(searchedPost).length == 0) {
+                    seterrorMessage("Could not find this post.");
+                    return;
+                }
             } catch (error) {
                 console.error("Error fetching post:", error);
             }

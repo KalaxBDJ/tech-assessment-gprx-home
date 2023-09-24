@@ -5,7 +5,7 @@ import { useState } from "react";
 //Get the posts from API
 function usePosts() {
   //LocalStorage Custom Hook
-  const { posts, savePosts } = useLocalStorage();
+  const { posts, savePosts, dataLoaded } = useLocalStorage();
   const [sharedMessage, setSharedMessage] = useState("");
 
   const createPost = async (post) => {
@@ -128,7 +128,8 @@ function usePosts() {
     updatePost,
     deletePost,
     sharedMessage,
-    setSharedMessage
+    setSharedMessage,
+    dataLoaded,
   };
 }
 

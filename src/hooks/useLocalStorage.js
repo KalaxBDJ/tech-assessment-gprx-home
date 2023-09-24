@@ -4,6 +4,7 @@ const LOCAL_STORAGE_KEY = "POSTS_V1";
 function useLocalStorage() {
   //Posts
   const [posts, setPosts] = useState([]);
+  const [dataLoaded, setdataLoaded] = useState(false);
 
   useEffect(() => {
     //Get from local storage for data persistance
@@ -12,11 +13,13 @@ function useLocalStorage() {
         .then((res) => res.json())
         .then((resp) => {
           setPosts(resp);
+          setdataLoaded(true);
           localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(resp));
         });
     } else {
       const localPosts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
       setPosts(localPosts);
+      setdataLoaded(true);
     }
   }, []);
 
@@ -28,7 +31,7 @@ function useLocalStorage() {
     setPosts(newPosts);
   };
 
-  return { posts, savePosts };
+  return { posts, savePosts, dataLoaded };
 }
 
 export { useLocalStorage };
