@@ -33,3 +33,39 @@ As you can see, after editing the fields and clicking the "Update Post Button" m
 As well you can delete the post by clicking the "DELETE" button. If the post is deleted successfully you will be redirected to the **Posts list** section and you will see a success Message at the top of the list.<br>
 **Example:**<br>
 ![](/documentation_images/post_deleted.png "Post deleted")<br><br>
+
+# Installation steps for local setup
+### Windows
+For setup your local environment to run this project you will need to install:
+- **Environment Setup**
+    - Node.js
+    You can install Node.js by following the steps of the next [URL](https://nodejs.org/es/download)<br>
+    **Note:** When installing Node.js please don't uncheck the "Install NPM" checkbox, because npm is essential for running this project.<br><br>
+    - GIT (**Optional**)<br>
+    If you want to pull the repository directly from git, you need to install it if you don't already have it installed.<br>
+    You can install git in the following [URL](https://git-scm.com/downloads)
+
+    ### Operating systems based on Linux
+    For Operating systems based on Linux you can run the following commands on the terminal.
+
+    ```
+    sudo apt-get update
+    sudo apt install curl
+    //Let's install node using nvm (node version manager)
+    curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
+    //Restart terminal
+    bash install_nvm.sh
+    node -v
+    npm -version
+    ```
+
+    After installing these packages you are ready to go with the next steps.
+- **Project initialization**<br>
+    Open the terminal and run the following commands.
+    ```
+    git clone https://github.com/KalaxBDJ/tech-assessment-gprx-home.git
+    cd tech-assessment-gprx-home
+    npm install
+    npm run dev
+    ```
+### Congratulations, Now you have your project locally.
