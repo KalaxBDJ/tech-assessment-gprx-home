@@ -13,6 +13,8 @@ In this section you can perform the following actions:
     ![](/documentation_images/filters.png "Filters")<br><br>
     - **Download CSV**
     - **Print Table**
+    - **Go to view/edit post**<br>
+    You can go to the **view/edit post** section by clicking the post row.
 - **Create individual post**<br>
 You can create individual posts.
 In the **posts** section you will see a button:<br>
