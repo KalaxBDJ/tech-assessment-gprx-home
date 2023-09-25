@@ -66,4 +66,8 @@ cd tech-assessment-gprx-home
 npm install
 npm run dev
 ```
+### Run test
+```
+npm run test
+```
 ### Congratulations, Now you have your project locally.
