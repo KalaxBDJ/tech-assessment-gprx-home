@@ -45,27 +45,25 @@ For setup your local environment to run this project you will need to install:
     If you want to pull the repository directly from git, you need to install it if you don't already have it installed.<br>
     You can install git in the following [URL](https://git-scm.com/downloads)
 
-    ### Operating systems based on Linux
-    For Operating systems based on Linux you can run the following commands on the terminal.
-
-    ```
-    sudo apt-get update
-    sudo apt install curl
-    //Let's install node using nvm (node version manager)
-    curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
-    //Restart terminal
-    bash install_nvm.sh
-    node -v
-    npm -version
-    ```
-
-    After installing these packages you are ready to go with the next steps.
-- **Project initialization**<br>
-    Open the terminal and run the following commands.
-    ```
-    git clone https://github.com/KalaxBDJ/tech-assessment-gprx-home.git
-    cd tech-assessment-gprx-home
-    npm install
-    npm run dev
-    ```
+### Operating systems based on Linux
+For Operating systems based on Linux you can run the following commands on the terminal.
+```
+sudo apt-get update
+sudo apt install curl
+//Let's install node using nvm (node version manager)
+curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
+//Restart terminal
+bash install_nvm.sh
+node -v
+npm -version
+```
+After installing these packages you are ready to go with the next steps.
+### **Project initialization**<br>
+Open the terminal and run the following commands.
+```
+git clone https://github.com/KalaxBDJ/tech-assessment-gprx-home.git
+cd tech-assessment-gprx-home
+npm install
+npm run dev
+```
 ### Congratulations, Now you have your project locally.
