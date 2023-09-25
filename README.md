@@ -63,8 +63,8 @@ After installing these packages you are ready to go with the next steps.
 ### **Project initialization**<br>
 Open the terminal and run the following commands.
 ```
-git clone https://github.com/KalaxBDJ/tech-assessment-gprx-home.git
-cd tech-assessment-gprx-home
+git clone https://github.com/KalaxBDJ/tech-assessment-prgx-home.git
+cd tech-assessment-prgx-home
 npm install
 npm run dev
 ```
