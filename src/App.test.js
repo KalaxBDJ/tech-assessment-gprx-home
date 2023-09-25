@@ -10,16 +10,17 @@ test("Home page", () => {
 test("Load posts", async () => {
   render(<App />);
 
-  // Use waitFor to wait for the link to appear
+  //Waiting to render home page and navbar appears
   await waitFor(() => {
     const postsLinks = screen.getAllByRole("link", {
       name: "Posts",
     });
 
-    // Assuming you want to select the first link, which is at index 0
+    //As i have 2 links redirecting the same section.
+    //I am going to select the first element
     const selectedLink = postsLinks[0];
 
-    // Verify that the selected link has the correct href attribute
+    //Assertion if selected link has the correct atribute and value
     expect(selectedLink).toHaveAttribute("href", "/posts");
 
     //Click button
